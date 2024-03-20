@@ -1,0 +1,118 @@
+{
+    "tables": {
+        "pokemon": {
+            "columns": {
+                "id": {
+                    "sdtype": "id"
+                },
+                "pokemon": {
+                    "sdtype": "categorical"
+                },
+                "generation_id": {
+                    "sdtype": "categorical"
+                },
+                "evolves_from_species_id": {
+                    "sdtype": "numerical"
+                },
+                "evolution_chain_id": {
+                    "sdtype": "numerical"
+                },
+                "color_id": {
+                    "sdtype": "categorical"
+                },
+                "shape_id": {
+                    "sdtype": "numerical"
+                },
+                "habitat_id": {
+                    "sdtype": "categorical"
+                },
+                "gender_rate": {
+                    "sdtype": "numerical"
+                },
+                "capture_rate": {
+                    "sdtype": "numerical"
+                },
+                "base_happiness": {
+                    "sdtype": "categorical"
+                },
+                "is_baby": {
+                    "sdtype": "categorical"
+                },
+                "hatch_counter": {
+                    "sdtype": "categorical"
+                },
+                "has_gender_differences": {
+                    "sdtype": "categorical"
+                },
+                "growth_rate_id": {
+                    "sdtype": "categorical"
+                },
+                "forms_switchable": {
+                    "sdtype": "categorical"
+                },
+                "is_legendary": {
+                    "sdtype": "categorical"
+                },
+                "is_mythical": {
+                    "sdtype": "categorical"
+                },
+                "pokemon_order": {
+                    "sdtype": "id"
+                },
+                "conquest_order": {
+                    "sdtype": "numerical"
+                }
+            },
+            "primary_key": "id"
+        },
+        "pokemon_types": {
+            "columns": {
+                "pokemon_id": {
+                    "sdtype": "id"
+                },
+                "type_id": {
+                    "sdtype": "id"
+                },
+                "slot": {
+                    "sdtype": "categorical"
+                },
+                "composite_key": {
+                    "sdtype": "id"
+                }
+            },
+            "primary_key": "composite_key"
+        },
+        "types": {
+            "columns": {
+                "id": {
+                    "sdtype": "id"
+                },
+                "type_name": {
+                    "sdtype": "categorical"
+                },
+                "generation_id": {
+                    "sdtype": "numerical"
+                },
+                "damage_class_id": {
+                    "sdtype": "categorical"
+                }
+            },
+            "primary_key": "id"
+        }
+    },
+    "relationships": [
+        {
+            "parent_table_name": "pokemon",
+            "child_table_name": "pokemon_types",
+            "parent_primary_key": "id",
+            "child_foreign_key": "pokemon_id"
+        },
+        {
+            "parent_table_name": "types",
+            "child_table_name": "pokemon_types",
+            "parent_primary_key": "id",
+            "child_foreign_key": "type_id"
+        }
+    ],
+    "METADATA_SPEC_VERSION": "MULTI_TABLE_V1"
+}

@@ -1,0 +1,24 @@
+
+Creating the Metadata JSON:
+
+Define Tables: You need to define each table in your dataset, usually by providing the table name and listing all the columns along with their data types (e.g., integer, float, string).
+
+Specify Primary and Foreign Keys: For each table, identify the primary key column(s). If there are relationships between tables, specify foreign keys that link tables together. This is crucial for maintaining relational integrity in synthetic data.
+
+Additional Properties: Depending on your dataset and requirements, you might also specify other properties in the metadata, such as distributions for certain columns, constraints, or anonymization techniques for sensitive data.
+
+Save as JSON: Once you've defined all the necessary information, you save it in a JSON file. This file format is both human-readable and machine-readable, making it a common choice for configuration and metadata.
+
+For SDV, you could use the Metadata class to automatically infer metadata from your data. 
+
+
+----------------------
+The actual data (the contents of your CSV files) is stored in DataFrames, and the metadata is a structured representation 
+(often a dictionary or an encapsulated object in SDV) that describes this data for purposes like synthetic data generation.
+--------------------------------
+
+In many data modeling contexts, especially when using tools like SDV, 
+it's important for primary and foreign keys that are involved in relationships 
+to have matching data types to ensure integrity and consistency across tables
+
+----------------------------------------
