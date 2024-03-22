@@ -1,8 +1,14 @@
 from sdv.metadata import MultiTableMetadata
+from sdv.datasets.local import load_csvs
+import plotly.io as pio
+import numpy as np
+
+FOLDER_NAME = 'input/'
 
 metadata = MultiTableMetadata.load_from_json(
-    filepath='metadata2.json')
+    filepath='Output/metadata.json')
 
+datasets = load_csvs(folder_name=FOLDER_NAME, read_csv_parameters={'sep':'\t'})
 
 # %%
 from sdv.multi_table import HMASynthesizer
@@ -23,8 +29,7 @@ synthetic_data = synthesizer.sample(1)
 synthesizer.save('synthesizer.pkl')
 
 # Save synthetic dataset
-synthetic_data['pokemon'].to_csv('synth/pokemon.csv', index=False)
-synthetic_data['pokemon_types'].to_csv('synth/pokemon_types.csv', index=False)
-synthetic_data['types'].to_csv('synth/types.csv', index=False)
+for table in synthetic_data:
+    synthetic_data[table].to_csv(f'Output/{table}.csv', index=False, sep ='\t')
 
 
